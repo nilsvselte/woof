@@ -35,7 +35,7 @@ export default function Home() {
     <main className={styles.main}>
       <h1>Woof!</h1>
       <button onClick={updateDoggo} className={styles.doggoBtn}>Click me for doggos</button>
-      {dataIsLoading && <p>loading new doggo! woof!</p>}
+      {dataIsLoading && <p>Loading new doggo! woof!</p>}
       {imageLink && (
         <div className={styles.dogMedia}>
         <img src={imageLink} alt="failed to load image, is link dead?"/>

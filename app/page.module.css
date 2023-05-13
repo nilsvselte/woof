@@ -12,9 +12,9 @@
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   height: 40px;
   line-height: 20px;
@@ -26,6 +26,7 @@
   text-align: center;
   text-decoration: none;
   transition: color 100ms;
+  align-items: center;
   vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
