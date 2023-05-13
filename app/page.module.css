@@ -40,7 +40,7 @@
 
 .dogMedia{
   display: inline-block;
-  width:900px;
+  width:65vw;
 }
 .dogMedia img, .dogMedia video {
   margin-top: 1rem;

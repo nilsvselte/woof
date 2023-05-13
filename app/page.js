@@ -46,6 +46,7 @@ export default function Home() {
         <video
           class="dogMedia"
           controls
+          playsInline
           src={movieLink}
           alt="failed to load dog video, is link dead?"
         >
