@@ -1,95 +1,58 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import Image from "next/image";
+import styles from "./page.module.css";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [imageLink, setImageLink] = useState("");
+  const [movieLink, setMovieLink] = useState("");
+  const [dataIsLoading, setDataIsLoading] = useState(false);
+  const updateDoggo = async () => {
+    setDataIsLoading(true);
+    const doggoData = await fetch("/api/doggo/getdoggo")
+      .then((response) => response.json())
+      .then((data) => {
+        const buffer = Buffer.from(data.image, "base64");
+        const byteArray = new Uint8Array(buffer);
+        const blob = new Blob([byteArray]);
+        const objectURL = URL.createObjectURL(blob);
+
+        if (data.isMovie) {
+          setImageLink("");
+          setMovieLink(objectURL);
+        } else {
+          setMovieLink("");
+          setImageLink(objectURL);
+        }
+        setDataIsLoading(false);
+      })
+      .catch((error) => {
+        console.warn(error);
+        setDataIsLoading(false);
+      });
+  };
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <h1>Woof!</h1>
+      <button onClick={updateDoggo} className={styles.doggoBtn}>Click me for doggos</button>
+      {dataIsLoading && <p>loading new doggo! woof!</p>}
+      {imageLink && (
+        <div className={styles.dogMedia}>
+        <img src={imageLink} alt="failed to load image, is link dead?"/>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+      )}
+      {movieLink && (
+        <div className={styles.dogMedia}>
+        <video
+          class="dogMedia"
+          controls
+          src={movieLink}
+          alt="failed to load dog video, is link dead?"
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <source src={movieLink} type="video/mp4" />
+        </video>
+        </div>
+      )}
     </main>
-  )
+  );
 }
