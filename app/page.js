@@ -34,7 +34,7 @@ export default function Home() {
   };
   return (
     <main className={styles.main}>
-      <h1>Woof!</h1>
+      <h1>Doggo🐶</h1>
       <button onClick={updateDoggo} className={styles.doggoBtn}><b>Get doggo!</b></button>
       <div className={styles.loadingContainer}>
       {dataIsLoading &&
