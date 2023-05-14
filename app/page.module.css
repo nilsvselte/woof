@@ -55,6 +55,12 @@
 .loadingContainer{
   height: 50px;
 }
+
+.link{
+  padding-top: 5rem;
+  text-decoration: none;
+  color: black;
+}
 /* Mobile */ 
 @media (max-width: 700px) {
   .dogMedia{
@@ -62,6 +68,8 @@
     width:95vw;
   }
 }
+
+
 
 /* Tablet and Smaller Desktop */ 
 @media (min-width: 701px) and (max-width: 1120px) {

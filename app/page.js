@@ -59,6 +59,7 @@ export default function Home() {
         </video>
         </div>
       )}
+      <a href="https://github.com/nilsvselte/woof" className={styles.link}>Check out doggo on <b>GitHub</b></a>
     </main>
   );
 }
