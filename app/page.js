@@ -49,7 +49,6 @@ export default function Home() {
       {movieLink && (
         <div className={styles.dogMedia}>
         <video
-          class="dogMedia"
           controls
           playsInline
           src={movieLink}
