@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     let randoDog = await fetch("https://random.dog/woof.json");
     let randoDogURL = await randoDog.json();
     //refetch image link if filesize is over 200mb for improved speed and reliability
+    console.log(randoDogURL.url)
     console.log(randoDogURL.fileSizeBytes);
     while(randoDogURL.fileSizeBytes>200000000){
         randoDog = await fetch("https://random.dog/woof.json");
