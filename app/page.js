@@ -8,9 +8,10 @@ export default function Home() {
   const [movieLink, setMovieLink] = useState("");
   const loadingData = "Loading new doggo!";
   const [dataIsLoading, setDataIsLoading] = useState(false);
+  let doggoData;
   const updateDoggo = async () => {
     setDataIsLoading(true);
-    const doggoData = await fetch("/api/doggo/getdoggo")
+    doggoData = await fetch("/api/doggo/getdoggo")
       .then((response) => response.json())
       .then((data) => {
         const buffer = Buffer.from(data.image, "base64");
@@ -29,6 +30,7 @@ export default function Home() {
       })
       .catch((error) => {
         console.warn(error);
+        console.log(doggoData.error)
         setDataIsLoading(false);
       });
   };
