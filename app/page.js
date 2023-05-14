@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [imageLink, setImageLink] = useState("");
   const [movieLink, setMovieLink] = useState("");
+  const loadingData = "Loading new doggo!";
   const [dataIsLoading, setDataIsLoading] = useState(false);
   const updateDoggo = async () => {
     setDataIsLoading(true);
@@ -34,8 +35,12 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Woof!</h1>
-      <button onClick={updateDoggo} className={styles.doggoBtn}>Click me for doggos</button>
-      {dataIsLoading && <p>Loading new doggo! woof!</p>}
+      <button onClick={updateDoggo} className={styles.doggoBtn}><b>Get doggo!</b></button>
+      <div className={styles.loadingContainer}>
+      {dataIsLoading &&
+        <p className={styles.loadingData}>{loadingData}</p>
+      }
+      </div>
       {imageLink && (
         <div className={styles.dogMedia}>
         <img src={imageLink} alt="failed to load image, is link dead?"/>

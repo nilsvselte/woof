@@ -6,6 +6,7 @@
   min-height: 100vh;
 }
 .doggoBtn{
+  font-weight: bold;
   background-color: #EA4C89;
   border-radius: 8px;
   border-style: none;
@@ -14,9 +15,9 @@
   cursor: pointer;
   display: flex;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
-  height: 40px;
+  height: 60px;
   line-height: 20px;
   list-style: none;
   margin: 0;
@@ -43,9 +44,16 @@
   width:65vw;
 }
 .dogMedia img, .dogMedia video {
-  margin-top: 1rem;
   width: 100%;
   height: auto;
+}
+.loadingData{
+  text-align: center;
+  width: 100vw;
+  vertical-align: middle;
+}
+.loadingContainer{
+  height: 50px;
 }
 /* Mobile */ 
 @media (max-width: 700px) {

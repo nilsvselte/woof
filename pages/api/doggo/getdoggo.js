@@ -6,6 +6,7 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  console.log("Fetching dog")
   const randoDog = await fetch("https://random.dog/woof.json");
   const randoDogURL = await randoDog.json();
   const response = await fetch(randoDogURL.url);
