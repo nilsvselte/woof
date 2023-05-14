@@ -12,10 +12,10 @@ export default async function handler(req, res) {
     //TODO:add check for filesize over 1024mb if that is the case ask again
     let randoDog = await fetch("https://random.dog/woof.json");
     let randoDogURL = await randoDog.json();
-    //refetch image link if filesize is over 200mb for improved speed and reliability
+    //refetch image link if filesize is over some size for improved speed and reliability
     console.log(randoDogURL.url)
     console.log(randoDogURL.fileSizeBytes);
-    while(randoDogURL.fileSizeBytes>200000000){
+    while(randoDogURL.fileSizeBytes>3432737){
         randoDog = await fetch("https://random.dog/woof.json");
         randoDogURL = await randoDog.json();
         console.log("refetching randodog URL")
